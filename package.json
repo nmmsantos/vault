@@ -2,9 +2,9 @@
   "author": "Nuno Santos <eu.nuno@gmail.com>",
   "description": "",
   "devDependencies": {
-    "concurrently": "^5.2.0",
-    "onchange": "^7.0.2",
-    "rollup": "^2.23.0",
+    "concurrently": "^6.0.1",
+    "onchange": "^7.1.0",
+    "rollup": "^2.45.1",
     "serve": "^11.3.2",
     "uglify-es": "^3.3.9"
   },
