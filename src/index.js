@@ -1,15 +1,15 @@
-import { init as unlock_page_init } from "./pages/unlock-page";
-import { init as config_page_init } from "./pages/config-page";
-import { init as list_page_init } from "./pages/list-page";
-import { init as secret_page_init } from "./pages/secret-page";
-import { init as edit_page_init } from "./pages/edit-page";
+import { init as unlockPageInit } from "./pages/unlock";
+import { init as configPageInit } from "./pages/config";
+import { init as listPageInit } from "./pages/list";
+import { init as secretPageInit } from "./pages/secret";
+import { init as editPageInit } from "./pages/edit";
 
 const PAGES = {
-    unlock_page_init: unlock_page_init,
-    config_page_init: config_page_init,
-    list_page_init: list_page_init,
-    secret_page_init: secret_page_init,
-    edit_page_init: edit_page_init
+    unlockPageInit: unlockPageInit,
+    configPageInit: configPageInit,
+    listPageInit: listPageInit,
+    secretPageInit: secretPageInit,
+    editPageInit: editPageInit
 };
 
 ons.ready(() => {
@@ -23,7 +23,7 @@ ons.ready(() => {
         const page = e.target;
 
         if (page.id) {
-            const delegate = PAGES[`${page.id}_init`];
+            const delegate = PAGES[`${page.id}Init`];
 
             if (_.isFunction(delegate)) {
                 delegate(page);
