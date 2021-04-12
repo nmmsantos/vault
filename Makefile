@@ -27,29 +27,31 @@ js/bundle.min.js: \
 	obj/onsenui.min.js \
 	obj/underscore-min.min.js \
 	obj/clipboard.min.js \
-	obj/crypto-js.min.js \
+	obj/jsrsasign-all-min.min.js \
+	obj/mode-ctr-min.js \
+	obj/sha3-min.js \
 	obj/eax.min.js \
 	obj/argon2.min.js \
 	obj/lzma-min.js \
-	obj/digest.min.js \
-	obj/sjcl.js \
 	obj/codeflask.min.js \
 	obj/prism-yaml.min.js \
 	obj/js-yaml.min.js \
+	obj/gapi.js \
 	obj/app.min.js
 	@cat \
 		obj/onsenui.min.js \
 		obj/underscore-min.min.js \
 		obj/clipboard.min.js \
-		obj/crypto-js.min.js \
+		obj/jsrsasign-all-min.min.js \
+		obj/mode-ctr-min.js \
+		obj/sha3-min.js \
 		obj/eax.min.js \
 		obj/argon2.min.js \
 		obj/lzma-min.js \
-		obj/digest.min.js \
-		obj/sjcl.js \
 		obj/codeflask.min.js \
 		obj/prism-yaml.min.js \
 		obj/js-yaml.min.js \
+		obj/gapi.js \
 		obj/app.min.js \
 		>js/bundle.min.js
 
@@ -121,10 +123,21 @@ obj/clipboard.min.js:
 	@echo "843586ca1f88cb832bf401cecd43f6f98d2254f9ff070c716a84a57848c7fe2d68e0455317fb21d3f0354b28a2f0f58e69efae3ebf93fca1f0ca7a1e6d2b8087  obj/clipboard.min.js" | sha512sum -c || \
 		{ rm obj/clipboard.min.js && false; }
 
-obj/crypto-js.min.js:
-	@curl -sSLo obj/crypto-js.min.js https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js
-	@echo "9ce42ebc3f672a2aefc4376f43d38ca9ed9d81aa5b3c1eef60032bcc98a1c399be68d71fd1d5f9de6e98c4ce0b800f6ef1ef5e83d417fbffa63eef2408da55d8  obj/crypto-js.min.js" | sha512sum -c || \
-		{ rm obj/crypto-js.min.js && false; }
+obj/jsrsasign-all-min.min.js:
+	# includes CryptoJS v3.1.2
+	@curl -sSLo obj/jsrsasign-all-min.min.js https://cdnjs.cloudflare.com/ajax/libs/jsrsasign/8.0.21/jsrsasign-all-min.min.js
+	@echo "7924f7a8cbee8d8234b6e0683ee6d28f15588d660429f6a54bb01595c2e970ee27fe21b516dee9140046e40cc8255ede8db67090fbc58a3bfb2b13ad18728107  obj/jsrsasign-all-min.min.js" | sha512sum -c || \
+		{ rm obj/jsrsasign-all-min.min.js && false; }
+
+obj/mode-ctr-min.js:
+	@curl -sSLo obj/mode-ctr-min.js https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/mode-ctr-min.js
+	@echo "81ae0e7e45bfd2459fc81a64afb7ae781566964c9e35b7828d670d7dda3b9f20b4a7d3b3776794d43dbbe0ad9522e0c3f53d3e3b9f3ef3e27258a299a3daee69  obj/mode-ctr-min.js" | sha512sum -c || \
+		{ rm obj/mode-ctr-min.js && false; }
+
+obj/sha3-min.js:
+	@curl -sSLo obj/sha3-min.js https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/sha3-min.js
+	@echo "02f8b7b6f523d4381c6702ad297d2ade5f9d3bbc3a2ed68c0f200156f190c9378670915ebdf2760920848cb51586568e08492388fe86062897b7d20266b70253  obj/sha3-min.js" | sha512sum -c || \
+		{ rm obj/sha3-min.js && false; }
 
 obj/eax.min.js: obj/cryptojs-extension.tar.gz
 	@rm -rf obj/cryptojs-extension
@@ -167,19 +180,6 @@ obj/lzma_worker.js:
 	@echo "2297888b9bb6f3afed8de7f55bfa03eb1f5950765854343d4967be3a0d64b963db8ae9dc8c4f67da79ddc4c2fca1c4d09e079c007d3eb1334bac41e81d6bbc63  obj/lzma_worker.js" | sha512sum -c || \
 		{ rm obj/lzma_worker.js && false; }
 
-obj/digest.min.js: obj/digest.js
-	@$(UGLIFYJS) -- obj/digest.js >obj/digest.min.js
-
-obj/digest.js:
-	@curl -sSLo obj/digest.js https://raw.githubusercontent.com/coiscir/jsdigest/637a49a1dd18148ac5b178ef30e50d315f1bd6e2/lib/latest/digest.js
-	@echo "c10dc2c16cd40ac40ef48e3350e2eed8282cdbc9b207f2b5143eb7aff9c6009e1433343668cfb456db3f625cabc4bb6f8c0a8a7730a95e6b192356eabe03ba76  obj/digest.js" | sha512sum -c || \
-		{ rm obj/digest.js && false; }
-
-obj/sjcl.js:
-	@curl -sSLo obj/sjcl.js https://raw.githubusercontent.com/bitwiseshiftleft/sjcl/85caa53c281eeeb502310013312c775d35fe0867/sjcl.js
-	@echo "27678d7a73f0c9f5e431534c173f50e7890a7d88b9000de6416a4d82d8d2273b0a1eda5b854b7fedbbdc8c6c309b313c654556308fe775a8085f5946f927f118  obj/sjcl.js" | sha512sum -c || \
-		{ rm obj/sjcl.js && false; }
-
 obj/codeflask.min.js:
 	@curl -sSLo obj/codeflask.min.js https://cdnjs.cloudflare.com/ajax/libs/codeflask/1.4.1/codeflask.min.js
 	@echo "333f76769ad2e621b8637fdb8f0b1ce5fb210f91a205b244a795b4e4051b60786ade2820d5f7a06042ecbb6233d40088c73f5140f444c7cc2e4c83fb5bde30b2  obj/codeflask.min.js" | sha512sum -c || \
@@ -194,6 +194,11 @@ obj/js-yaml.min.js:
 	@curl -sSLo obj/js-yaml.min.js https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.14.0/js-yaml.min.js
 	@echo "89af6071990b1c0fa590d493e5796c787cff368e7ef9806778cb03a7521944949b8b562a42f05eb2426e1b5911f8f1f5c3b1346c580465e81c8f4130a57427c3  obj/js-yaml.min.js" | sha512sum -c || \
 		{ rm obj/js-yaml.min.js && false; }
+
+obj/gapi.js:
+	@curl -sSLo obj/gapi.js https://apis.google.com/js/api.js
+	@echo "2cf683c08e37d1a5ed8e6a7951a54f0aeea1c49537b8b2906b2787089b8638153c3edd7c5b0de5a8dcbb84b6b152e64fb6def269fe826d6302707b8bf61456e4  obj/gapi.js" | sha512sum -c || \
+		{ rm obj/gapi.js && false; }
 
 start:
 	@$(SERVE)
