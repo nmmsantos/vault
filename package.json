@@ -6,7 +6,7 @@
     "onchange": "^7.1.0",
     "rollup": "^2.45.1",
     "serve": "^11.3.2",
-    "uglify-es": "^3.3.9"
+    "terser": "^5.6.1"
   },
   "license": "MIT",
   "main": "index.html",

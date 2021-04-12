@@ -2,103 +2,54 @@
 <html>
 
 <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <title>Vault</title>
     <link rel="stylesheet" href="css/bundle.min.css">
     <script src="js/bundle.min.js"></script>
 </head>
 
 <body>
-    <ons-navigator swipeable="" id="navigator" page="unlock.html"></ons-navigator>
+    <section class="section">
+        <h1 class="title">Vault</h1>
 
-    <template id="unlock.html">
-        <ons-page id="unlockPage">
-            <ons-toolbar>
-                <div class="center">Vault Unlock</div>
-                <div class="right">
-                    <ons-toolbar-button id="newConfig">New Config</ons-toolbar-button>
-                </div>
-            </ons-toolbar>
-
-            <div style="text-align: center; margin-top: 200px">
-                <form id="unlock">
-                    <p>
-                        <ons-input id="password" placeholder="Password" type="password" modifier="underbar">
-                        </ons-input>
-                    </p>
-                    <p>
-                        <button type="submit" class="button">Unlock</button>
-                    </p>
-                </form>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label id="textLabel" for="text" class="label">Plaintext</label>
             </div>
-        </ons-page>
-    </template>
-
-    <template id="config.html">
-        <ons-page id="configPage">
-            <ons-toolbar>
-                <div class="left">
-                    <ons-back-button>Vault Unlock</ons-back-button>
+            <div class="field-body">
+                <div class="field">
+                    <div class="control">
+                        <textarea id="text" rows="11" class="textarea" style="font-family: 'Courier New', monospace"></textarea>
+                    </div>
                 </div>
-                <div class="center">Config</div>
-                <div class="right">
-                    <ons-toolbar-button id="generate">Generate</ons-toolbar-button>
+            </div>
+        </div>
+
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label for="password" class="label">Password</label>
+            </div>
+            <div class="field-body">
+                <div class="field is-narrow">
+                    <div class="control">
+                        <input id="password" type="password" class="input">
+                    </div>
                 </div>
-            </ons-toolbar>
+            </div>
+        </div>
 
-            <div id="configEditor"></div>
-        </ons-page>
-    </template>
-
-    <template id="list.html">
-        <ons-page id="listPage">
-            <ons-toolbar>
-                <div class="center">Vault</div>
-                <div class="right">
-                    <ons-toolbar-button id="edit">Edit</ons-toolbar-button>
+        <div class="field is-horizontal">
+            <div class="field-label"></div>
+            <div class="field-body">
+                <div class="field">
+                    <div class="control">
+                        <button id="action" class="button is-primary">Encrypt</button>
+                    </div>
                 </div>
-            </ons-toolbar>
-
-            <p style="text-align: center; margin-top: 10px;">
-                <ons-search-input placeholder="Search" onchange="ons.notification.alert('Searched for: ' + this.value)">
-                </ons-search-input>
-            </p>
-
-            <ons-list>
-                <ons-lazy-repeat id="secretsList"></ons-lazy-repeat>
-            </ons-list>
-        </ons-page>
-    </template>
-
-    <template id="secret.html">
-        <ons-page id="secretPage">
-            <ons-toolbar>
-                <div class="left">
-                    <ons-back-button>Secrets</ons-back-button>
-                </div>
-                <div class="center"></div>
-            </ons-toolbar>
-
-            <ons-list>
-                <ons-list-header>Fields</ons-list-header>
-                <ons-lazy-repeat id="fieldsList"></ons-lazy-repeat>
-            </ons-list>
-        </ons-page>
-    </template>
-
-    <template id="edit.html">
-        <ons-page id="editPage">
-            <ons-toolbar>
-                <div class="left">
-                    <ons-back-button>Secrets</ons-back-button>
-                </div>
-                <div class="center">Edit</div>
-            </ons-toolbar>
-
-            <div id="editor"></div>
-        </ons-page>
-    </template>
-
-    <input id="config" type="hidden" value="ezG68cvjPlXxSy6DCxIaYw.x1PAGnTdDLWIP5O4hFwg_RjPXxY5FSHfcOIVDrpa6Kcc99bMc4CrQ1Fm7e1Myk_cTtIRFcRAvD1btVn-ClLkdYBD2LC7EI0">
+            </div>
+        </div>
+    </section>
 </body>
 
 </html>
