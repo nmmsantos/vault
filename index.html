@@ -11,11 +11,11 @@
     <ons-navigator swipeable="" id="navigator" page="unlock.html"></ons-navigator>
 
     <template id="unlock.html">
-        <ons-page id="unlock_page">
+        <ons-page id="unlockPage">
             <ons-toolbar>
                 <div class="center">Vault Unlock</div>
                 <div class="right">
-                    <ons-toolbar-button id="config">Config</ons-toolbar-button>
+                    <ons-toolbar-button id="newConfig">New Config</ons-toolbar-button>
                 </div>
             </ons-toolbar>
 
@@ -34,7 +34,7 @@
     </template>
 
     <template id="config.html">
-        <ons-page id="config_page">
+        <ons-page id="configPage">
             <ons-toolbar>
                 <div class="left">
                     <ons-back-button>Vault Unlock</ons-back-button>
@@ -45,12 +45,12 @@
                 </div>
             </ons-toolbar>
 
-            <div id="config_editor"></div>
+            <div id="configEditor"></div>
         </ons-page>
     </template>
 
     <template id="list.html">
-        <ons-page id="list_page">
+        <ons-page id="listPage">
             <ons-toolbar>
                 <div class="center">Vault</div>
                 <div class="right">
@@ -64,13 +64,13 @@
             </p>
 
             <ons-list>
-                <ons-lazy-repeat id="secrets-list"></ons-lazy-repeat>
+                <ons-lazy-repeat id="secretsList"></ons-lazy-repeat>
             </ons-list>
         </ons-page>
     </template>
 
     <template id="secret.html">
-        <ons-page id="secret_page">
+        <ons-page id="secretPage">
             <ons-toolbar>
                 <div class="left">
                     <ons-back-button>Secrets</ons-back-button>
@@ -80,13 +80,13 @@
 
             <ons-list>
                 <ons-list-header>Fields</ons-list-header>
-                <ons-lazy-repeat id="fields-list"></ons-lazy-repeat>
+                <ons-lazy-repeat id="fieldsList"></ons-lazy-repeat>
             </ons-list>
         </ons-page>
     </template>
 
     <template id="edit.html">
-        <ons-page id="edit_page">
+        <ons-page id="editPage">
             <ons-toolbar>
                 <div class="left">
                     <ons-back-button>Secrets</ons-back-button>
@@ -98,7 +98,7 @@
         </ons-page>
     </template>
 
-    <input id="secrets-db" type="hidden" value="WyI3ODkxNDNkNjExOGNjOWQ4NzM0NzdjNjA0NDI1MjdjZiIsMTAsMTAyNDAsMzIsNCwiQXJnb24yaWQiLHRydWVd.zrmbstnmmpfGGOO883J4RMeDc63QgRnkyG4zuuWrFxZAFVosGadiGcltNFmInhU1voyv08cA1hMz/W5wiuG5KY5PlETNrjDYuHGYSuT2Ce3OeV5FYo2YNZOhf1TXtXDk6ZJki74kI4G8KM78tPQueTL/U8Zj7wk=">
+    <input id="config" type="hidden" value="ezG68cvjPlXxSy6DCxIaYw.x1PAGnTdDLWIP5O4hFwg_RjPXxY5FSHfcOIVDrpa6Kcc99bMc4CrQ1Fm7e1Myk_cTtIRFcRAvD1btVn-ClLkdYBD2LC7EI0">
 </body>
 
 </html>
