@@ -4,14 +4,24 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="msapplication-TileColor" content="#fadf75">
+    <meta name="msapplication-config" content="/vault/icons/browserconfig.xml">
+    <meta name="theme-color" content="#fcedb3">
     <title>Vault</title>
     <link rel="stylesheet" href="css/bundle.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/vault/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/vault/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/vault/icons/favicon-16x16.png">
+    <link rel="manifest" href="/vault/icons/site.webmanifest">
+    <link rel="mask-icon" href="/vault/icons/safari-pinned-tab.svg" color="#f7cf30">
+    <link rel="shortcut icon" href="/vault/icons/favicon.ico">
     <script src="js/bundle.min.js"></script>
 </head>
 
 <body>
     <section class="section">
         <h1 class="title">Vault</h1>
+        <p class="subtitle is-6">AES-256-EAX-Argon2</p>
 
         <div class="field is-horizontal">
             <div class="field-label is-normal">
@@ -42,9 +52,12 @@
         <div class="field is-horizontal">
             <div class="field-label"></div>
             <div class="field-body">
-                <div class="field">
+                <div class="field is-grouped">
                     <div class="control">
                         <button id="action" class="button is-primary">Encrypt</button>
+                    </div>
+                    <div class="control">
+                        <button id="copy" class="button is-link" style="display: none">Copy</button>
                     </div>
                 </div>
             </div>

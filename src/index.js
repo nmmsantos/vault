@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const textElem = document.querySelector('#text');
     const passwordElem = document.querySelector('#password');
     const actionElem = document.querySelector('#action');
+    const copyElem = document.querySelector('#copy');
 
     const { hash, origin, pathname } = window.location;
     window.location.hash = '';
@@ -32,17 +33,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     actionElem.addEventListener('click', async () => {
         if (!textElem.value) {
-            toast('Invalid plaintext', true);
+            textElem.classList.add('is-danger');
             return;
         }
 
         if (!passwordElem.value) {
-            toast('Invalid password', true);
+            passwordElem.classList.add('is-danger');
             return;
         }
 
+        textElem.classList.remove('is-danger');
+        passwordElem.classList.remove('is-danger');
         actionElem.disabled = true;
-        actionElem.classList.toggle('is-loading');
+        actionElem.classList.add('is-loading');
+        copyElem.setAttribute('style', 'display: none');
+        copyElem.removeAttribute('data-clipboard');
 
         await new Promise(resolve => setTimeout(resolve));
 
@@ -54,9 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     plaintext = await aes256EaxArgon2Decrypt(passwordElem.value, textElem.value);
                 } catch (e) {
                     if (e === DECRYPT_EXCEPTION) {
-                        toast('Invalid password', true);
+                        passwordElem.classList.add('is-danger');
                     } else {
-                        toast('Something happened, error:' + JSON.stringify(e), true);
                         console.error('error', e);
                     }
 
@@ -67,67 +71,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 textLabelElem.innerHTML = 'Plaintext';
                 textElem.value = plaintext;
                 actionElem.innerHTML = 'Encrypt';
-                toast('Decrypted');
             } else {
                 let ciphertext;
 
                 try {
                     ciphertext = await aes256EaxArgon2Encrypt(passwordElem.value, textElem.value);
                 } catch (e) {
-                    toast('Something happened', true);
                     console.error('error', e);
                     return;
                 }
 
-                let response;
-
-                try {
-                    response = await fetch('https://api.shrtco.de/v2/shorten', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded'
-                        },
-                        body: `url=${origin}${pathname}%23${ciphertext}`
-                    });
-                } catch (e) {
-                    toast('Something happened', true);
-                    console.error('error', e);
-                    return;
-                }
-
-                let data;
-
-                try {
-                    data = await response.json();
-                } catch (e) {
-                    toast('Something happened', true);
-                    console.error('error', e);
-                    return;
-                }
-
-                if (!data.ok) {
-                    toast('Something happened', true);
-                    console.error('error', data);
-                    return;
-                }
-
-                const url = data.result.full_short_link3;
-                const toastMessage = document.createElement('div');
-                toastMessage.innerText = `Share link: ${url}`;
-
-                if (navigator.clipboard && window.isSecureContext) {
-                    toastMessage.style.cursor = 'pointer';
-                    toastMessage.addEventListener('click', async () => {
-                        await navigator.clipboard.writeText(url);
-                        toast('Copied to clipboard');
-                    });
-                }
-
-                toast(toastMessage);
+                copyElem.setAttribute('data-clipboard', `${origin}${pathname}#${ciphertext}`);
+                copyElem.removeAttribute('style');
             }
         } finally {
             actionElem.disabled = false;
             actionElem.classList.toggle('is-loading');
         }
+    });
+
+    copyElem.addEventListener('click', async () => {
+        await navigator.clipboard.writeText(copyElem.getAttribute('data-clipboard'));
     });
 });

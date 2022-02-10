@@ -1,0 +1,16 @@
+{
+    "cleanUrls": false,
+    "directoryListing": false,
+    "redirects": [
+        {
+            "destination": "/vault",
+            "source": "/"
+        }
+    ],
+    "rewrites": [
+        {
+            "destination": "/:segment*",
+            "source": "/vault/:segment*"
+        }
+    ]
+}
