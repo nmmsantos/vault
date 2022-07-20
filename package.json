@@ -13,7 +13,7 @@
         "onchange": "^7.1.0",
         "rollup": "^2.67.2",
         "serve": "^13.0.2",
-        "terser": "^5.10.0"
+        "terser": "^5.14.2"
     },
     "homepage": "https://github.com/nmmsantos/vault#readme",
     "license": "AGPL-3.0-or-later",
